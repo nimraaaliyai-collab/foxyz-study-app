@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f5f0ff" />
+    <meta name="description" content="foxyZ is a personal learning assistant for study planning, viva practice, interviews, and focus sessions." />
+    <title>foxyZ</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="manifest.json" />
+  </head>
+  <body>
+    <div class="app">
+      <aside class="sidebar">
+        <div class="brand">foxyZ</div>
+        <p class="side-label">YOUR STUDY SPACE</p>
+
+        <button class="nav-item active" data-view="chat">✨ AI Study Helper</button>
+        <button class="nav-item" data-view="planner">📚 Study Planner</button>
+        <button class="nav-item" data-view="quiz">📝 Viva Practice</button>
+        <button class="nav-item" data-view="interview">💼 Interview Questions</button>
+        <button class="nav-item" data-view="practice">🎤 Mock Practice</button>
+        <button class="nav-item" data-view="mockTest">✅ Mock Tests</button>
+        <button class="nav-item" data-view="timeline">🗓️ Timeline</button>
+        <button class="nav-item" data-view="timer">⏱️ Focus Timer</button>
+
+        <div class="sidebar-note">
+          <span>🌷</span>
+          <p>Small steps every day lead to big dreams.</p>
+        </div>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">YOUR PERSONAL LEARNING SPACE</p>
+            <h1 id="pageTitle">foxyZ AI Study Helper ✨</h1>
+          </div>
+          <div class="avatar">S</div>
+        </header>
+
+        <section id="chatView" class="view">
+          <div class="welcome">
+            <div class="welcome-icon">💜</div>
+            <h2>Hey, future achiever!</h2>
+            <p>What would you like to learn today?</p>
+          </div>
+
+          <div class="suggestions">
+            <button data-prompt="Explain artificial intelligence in simple words">💡 Explain a topic</button>
+            <button data-prompt="Give me important viva questions about Python">📖 Prepare for viva</button>
+            <button data-prompt="Give me five multiple choice questions about computer science">🎯 Practise a quiz</button>
+            <button data-prompt="Make a simple study plan for today">🗓️ Plan my study</button>
+          </div>
+
+          <div id="messages" class="messages" aria-live="polite">
+            <div class="message assistant">
+              Hi! I'm your foxyZ assistant. 💜<br />
+              Ask me a question, or choose one of the suggestions above.
+            </div>
+          </div>
+
+          <form id="chatForm" class="chat-form">
+            <input
+              id="userInput"
+              type="text"
+              placeholder="Ask me anything about your studies..."
+              autocomplete="off"
+              aria-label="Your study question"
+              required
+            />
+            <button type="submit" id="sendButton">Send ↑</button>
+          </form>
+          <p class="hint">foxyZ demo · Connect an AI model in Step 5</p>
+        </section>
+
+        <section id="plannerView" class="view hidden">
+          <div class="panel">
+            <h2>My study tasks 🌷</h2>
+            <p>Add a task and tick it when you finish.</p>
+            <form id="taskForm" class="task-form">
+              <input id="taskInput" placeholder="e.g. Revise Python functions" required />
+              <button type="submit">Add task +</button>
+            </form>
+            <ul id="taskList" class="task-list"></ul>
+          </div>
+        </section>
+
+        <section id="quizView" class="view hidden">
+          <div class="panel quiz-panel">
+            <h2>Quick Python Viva 📝</h2>
+            <p id="quizCount">Question 1 of 3</p>
+            <h3 id="quizQuestion"></h3>
+            <div id="quizOptions" class="quiz-options"></div>
+            <p id="quizFeedback" aria-live="polite"></p>
+            <button id="nextQuestion" class="primary hidden" type="button">Next question →</button>
+          </div>
+        </section>
+
+        <section id="interviewView" class="view hidden">
+          <div class="panel">
+            <h2>Interview question bank 💼</h2>
+            <p>Explore common behavioral and technical interview questions. Open a card for answer guidance.</p>
+            <div id="interviewQuestions" class="interview-list"></div>
+          </div>
+        </section>
+
+        <section id="practiceView" class="view hidden">
+          <div class="panel">
+            <p class="eyebrow">PRACTICE OUT LOUD</p>
+            <h2>Mock interview practice 🎤</h2>
+            <p id="practiceCount"></p>
+            <h3 id="practiceQuestion"></h3>
+            <label class="practice-label" for="practiceAnswer">Your answer</label>
+            <textarea id="practiceAnswer" rows="6" placeholder="Take a moment to organize your thoughts, then type or say your answer..."></textarea>
+            <div class="practice-actions">
+              <button id="practiceHint" class="secondary-button" type="button">Show coaching tip</button>
+              <button id="nextPractice" class="primary" type="button">Next question →</button>
+            </div>
+            <p id="practiceFeedback" class="practice-feedback" aria-live="polite"></p>
+          </div>
+        </section>
+
+        <section id="mockTestView" class="view hidden">
+          <div class="panel quiz-panel">
+            <p class="eyebrow">CHECK YOUR KNOWLEDGE</p>
+            <h2>Computer science mock test ✅</h2>
+            <p id="testCount">Question 1 of 5</p>
+            <h3 id="testQuestion"></h3>
+            <div id="testOptions" class="quiz-options"></div>
+            <p id="testFeedback" aria-live="polite"></p>
+            <button id="nextTestQuestion" class="primary hidden" type="button">Next question →</button>
+            <div id="testResults" class="test-results hidden" aria-live="polite"></div>
+          </div>
+        </section>
+
+        <section id="timelineView" class="view hidden">
+          <div class="panel">
+            <h2>My preparation timeline 🗓️</h2>
+            <p>Add interview milestones, revision sessions, and mock tests to keep your preparation on track.</p>
+            <form id="timelineForm" class="timeline-form">
+              <label>Activity<input id="timelineTitle" placeholder="e.g. Practise project introduction" required /></label>
+              <label>Date<input id="timelineDate" type="date" required /></label>
+              <label>Type<select id="timelineType"><option>Interview</option><option>Revision</option><option>Mock test</option><option>Milestone</option></select></label>
+              <button type="submit" class="primary">Add to timeline +</button>
+            </form>
+            <ul id="timelineList" class="timeline-list"></ul>
+          </div>
+        </section>
+
+        <section id="timerView" class="view hidden">
+          <div class="panel timer-panel">
+            <p class="eyebrow">FOCUS ONE STEP AT A TIME</p>
+            <h2>Focus timer ⏱️</h2>
+            <p>Choose a session length, settle in, and take a break when the timer ends.</p>
+            <label class="timer-duration-label" for="timerDuration">Session length</label>
+            <select id="timerDuration" class="timer-duration">
+              <option value="15">15 minutes</option>
+              <option value="25" selected>25 minutes</option>
+              <option value="45">45 minutes</option>
+              <option value="60">60 minutes</option>
+            </select>
+            <div id="timerDisplay" class="timer-display" role="timer" aria-live="off">25:00</div>
+            <p id="timerStatus" class="timer-status" aria-live="polite">Ready when you are 🌷</p>
+            <div class="timer-actions">
+              <button id="timerStart" class="primary" type="button">Start focus</button>
+              <button id="timerReset" class="secondary-button" type="button">Reset</button>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker.register("./sw.js").catch((error) => console.error("Service worker error:", error));
+        });
+      }
+    </script>
+  </body>
+</html>

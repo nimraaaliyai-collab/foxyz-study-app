@@ -1,0 +1,10 @@
+{
+  "name": "foxyZ Study App",
+  "short_name": "foxyZ",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#fffdf9",
+  "theme_color": "#a78bfa",
+  "description": "A study assistant app with planner, quiz, mock interview practice, and focus timer.",
+  "icons": []
+}
