@@ -5,9 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#f5f0ff" />
     <meta name="description" content="foxyZ is a personal learning assistant for study planning, viva practice, interviews, and focus sessions." />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="foxyZ" />
     <title>foxyZ</title>
     <link rel="stylesheet" href="style.css" />
     <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="icon.svg" />
   </head>
   <body>
     <div class="app">
@@ -36,7 +41,10 @@
             <p class="eyebrow">YOUR PERSONAL LEARNING SPACE</p>
             <h1 id="pageTitle">foxyZ AI Study Helper ✨</h1>
           </div>
-          <div class="avatar">S</div>
+          <div class="topbar-actions">
+            <button id="installButton" class="install-button hidden" type="button">Install app</button>
+            <div class="avatar">S</div>
+          </div>
         </header>
 
         <section id="chatView" class="view">

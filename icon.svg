@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="foxyZ icon">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f5e9ff"/>
+      <stop offset="100%" stop-color="#d9c6ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="120" fill="url(#bg)"/>
+  <path d="M256 88c-62 0-112 50-112 112 0 45 27 84 66 101v49c0 19 15 34 34 34h24c19 0 34-15 34-34v-49c39-17 66-56 66-101 0-62-50-112-112-112zm0 40c39 0 72 33 72 72 0 31-20 58-48 68l-12 5v53h-24v-53l-12-5c-28-10-48-37-48-68 0-39 33-72 72-72z" fill="#604a94"/>
+  <circle cx="256" cy="212" r="32" fill="#ffffff" opacity="0.9"/>
+  <path d="M154 342c32-35 78-54 102-54s70 19 102 54" fill="none" stroke="#8c6ad6" stroke-width="24" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,27 @@
+const style = document.createElement("style");
+style.textContent = `
+  .topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .install-button {
+    background: #604a94;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 16px;
+    font-weight: 700;
+    box-shadow: 0 8px 20px rgba(96, 74, 148, 0.25);
+  }
+
+  .install-button:hover {
+    background: #4f3d7d;
+  }
+
+  .install-button.hidden {
+    display: none;
+  }
+`;
+document.head.appendChild(style);
